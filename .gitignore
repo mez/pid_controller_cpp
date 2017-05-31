@@ -1,0 +1,5 @@
+build
+tags
+cmakepatch.txt
+cmake-build-debug
+.idea
