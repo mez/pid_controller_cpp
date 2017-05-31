@@ -6,7 +6,7 @@ PID Controller in C++11
 * Graphics Quality: Fastest
 
 ### Reflection
-PID controller is relatively simple to implement, the
+A PID controller is relatively simple to implement, the
 challenging part is choosing proper coefficients (Kp, Ki, Kd) 
 that stabilize the system as a whole.
 
@@ -28,10 +28,10 @@ double PID::steering() {
   double steer = -Kp*p_error - Ki*i_error  - Kd*d_error;
 
   if (steer < MIN_STEER)
-    steer = MIN_STEER;
+    steer = MIN_STEER; //-1
 
   if (steer > MAX_STEER)
-    steer = MAX_STEER;
+    steer = MAX_STEER; //1
 
   return steer;
 }
@@ -46,7 +46,7 @@ biases.
 * `- Kd*d_error` is responsible for keeping track of the future. 
 How will the error change in the future? This is needed
 mostly to reduce oscillation that is usually caused by
-having just a P controller.
+having just a P controller with high `Kp` gain.
 
 Since the simulator calculates the CTE for me, I can handle the rest
 and compute the needed errors as follows:
